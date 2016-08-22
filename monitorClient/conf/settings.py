@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # _*_ coding:utf-8 _*_
-from plugins import get_ip
 
 configs = {
+    "HostID": '192.168.112.130',
     "Server": "192.168.8.134",
     "ServerPort": 8000,
     "urls": {

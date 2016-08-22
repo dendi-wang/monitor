@@ -20,6 +20,6 @@ from monitor import urls, api_urls
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^monitor/', include(urls)),
-    url(r'^monitor/', include(api_urls)),
+    url(r'^api/', include(api_urls)),
 
 ]

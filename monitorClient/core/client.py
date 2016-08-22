@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # _*_ coding:utf-8 _*_
-from plugins.get_ip import Get_ip
 from conf import settings
 import threading
 import urllib, urllib2
@@ -72,7 +71,7 @@ class ClientHandle(object):
             # print("--monitor result:",plugin_callback)
             # print '==================', plugin_callback
             report_data = {
-                'client_id': settings.configs['HostID'],
+                'client_id': self.client_ip,
                 'service_name': service_name,
                 'data': json.dumps(plugin_callback)
             }

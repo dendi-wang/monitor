@@ -113,7 +113,7 @@ def service_data_report(request):
             # REDIS_OBJ.lpush(redis_key_format,json.dumps(data))
 
             # 在这里同时触发监控
-            host_obj = models.Host.objects.get(id=client_id)
+            host_obj = models.Host.objects.get(ip_addr=client_id)
             service_triggers = get_host_triggers(host_obj)
 
             trigger_handler = data_processing.DataHandler(settings, connect_redis=False)
@@ -126,7 +126,7 @@ def service_data_report(request):
             # host_alive_key = "HostAliveFlag_%s" % client_id
             # REDIS_OBJ.set(host_alive_key,time.time())
         except Exception, e:
-            print('----->err:', e)
+            print('--------->err:', e)
 
     return HttpResponse(json.dumps("---report success---"))
 
