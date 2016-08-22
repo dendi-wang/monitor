@@ -1,0 +1,50 @@
+Nagios、zabbix
+
+    server -----> client(agent)
+        service template S1
+            cpu,ram,disk
+        host A :S1
+    server -----> snmp,ipmi
+
+主动监控：是监控服务器主动向客户端索取数据
+    好处：
+        1.不需要装客户端
+        2.简单
+    坏处：
+        1.因为只靠服务端轮询，当客户端过多的时候，就出现瓶颈了，（分布式代理解决）
+        2.不易灵活的定制各种监控插件
+
+被动监控：是客户端主动向服务器汇报数据
+    好处：
+        1.对服务器端的压力小，能承受的客户端多
+        2.灵活定制插件
+        3.延迟小
+    坏处：
+        1、需要装客户端
+
+监控的东西
+    网络层面
+        网络流量、延迟、基本存活状态
+    系统层面
+        cpu\disk\ram\load\.....
+    应用层
+        mysql、tomcat、nginx、redis、django、ha-proxy
+    业务层面
+        pv、uv、订单总量、
+    硬件层面
+        磁盘、温度....
+
+
+架构？
+mysql
+主动通信？Snmp,wget
+被动通信？Agent --how to communicate with the monitor server
+Socket server -->Socket client
+能否用现成的c/s架构？Rabbit mq,redis 订阅发布,http？
+
+
+Http 特性：
+1.短连接
+2.无状态
+3.安全认证
+4.被动通信
